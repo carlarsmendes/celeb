@@ -29,15 +29,20 @@ class App extends Component {
       .then((response) => {
          console.log("response------>",response.data.results);
         this.setState({
-          celebrities: response.data
+          celebrities: response.data.results
         })
       })
-
-
-
-      
   }
+
+  // showCelebDetails(){
+  //   let celebDetails = this.state.celebrities.results
+  //     .find(u => u.id === this.props.match.params.celebId)
+
+  // }
+
   render() {
+
+    
     return(
     <div className="App">
 
@@ -45,10 +50,10 @@ class App extends Component {
 
       <div className="dashboard">
           <div className="celebs-list">
-           {!this.state.celebrities.results && <div>Loading...</div>}
-          {this.state.celebrities.results && 
+           {!this.state.celebrities && <div>Loading...</div>}
+          {this.state.celebrities && 
             <div>
-      {this.state.celebrities.results.map(celeb => 
+      {this.state.celebrities.map(celeb => 
           <li key={celeb.id} className="celebs-list-item">
               <NavLink to={'/'+celeb.id}> 
                 <img src={`https://image.tmdb.org/t/p/w185/${celeb.profile_path}`} alt="" />
@@ -58,9 +63,13 @@ class App extends Component {
           </div>
           }
         </div>
-        <div className="celeb-detail"></div>
-        <CelebDetails />
-      </div>
+        <div className="celeb-detail">
+        {/* <Route path="/:celebId" component={CelebDetails} /> */}
+        <Route path="/:celebId" render={props => <CelebDetails {...props} celebrities={this.state.celebrities} />} />
+          {/* <h1>Celebrity Detail</h1>
+          {console.log("this.state.celebrities.results--->",this.state.celebrities)}
+        {this.state.celebrities.filter(u => u.id === this.props.match.params.celeb.id).name} */}
+      </div></div>
       
 
     </div>

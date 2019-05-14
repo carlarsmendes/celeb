@@ -17,6 +17,7 @@
 .dashboard{
   display:flex;
   flex-grow:1;
+  /* width:30%; */
 }
 
 .celebs-list{
@@ -48,9 +49,9 @@
 }
 
 .celeb-detail{
-  background-color:#ecb92bf3;
   height: 100%;
   width:70vw;
   text-align:left;
   display:flex;
+  /* border:3px solid yellow; */
 }
