@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+
 import './App.css';
 
-function App() {
-  return (
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { 
+      celebrities: [] }
+  }
+
+  componentDidMount() {
+    axios.get("https://api.themoviedb.org/3/person/popular?api_key=e22350b1c77a45e2a55c374787f0acfc&language=en-US")
+      .then(response => {
+        console.log("response.data.results------>",response.data.results);
+        this.setState({
+          celebrities: response.data
+        })
+      })
+  }
+  render() {
+    return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>Movie Celebrities</h1>
+    {!this.state.celebrities.results && <div>Loading...</div>}
+        {this.state.celebrities.results && 
+    <div>
+     {this.state.celebrities.results.map(celeb => 
+        <li key={celeb.id}>{celeb.name}</li>)}
+    </div>}
     </div>
+
   );
+  }
 }
 
 export default App;
+
