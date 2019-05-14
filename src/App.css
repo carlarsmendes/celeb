@@ -14,6 +14,14 @@
 
 }
 
+h1.header{
+  text-align:center;
+  background-color:#222;
+  color:white;
+  margin:0;
+  padding:20px;
+}
+
 .dashboard{
   display:flex;
   flex-grow:1;
@@ -30,6 +38,9 @@
 .celebs-list-item{
   padding: 3px;
   list-style-type: none;
+  display:flex;
+  justify-content:center;
+  align-content:center;
   }
 
   .celebs-list-item a{
@@ -38,7 +49,9 @@
     }
 
 .celebs-list-item img{
-  height: 5vh;
+  height: 30px;
+  width:30px;
+  object-fit:cover;
   padding-right:5px;
   /* overflow-x:hidden; */
   }
@@ -51,7 +64,7 @@
 .celeb-detail{
   height: 100%;
   width:70vw;
-  text-align:left;
+  text-align:center;
   display:flex;
   /* border:3px solid yellow; */
 }
