@@ -1,4 +1,4 @@
-You can find the porject Online Here:
+You can find the Project Online Here:
 http://romantic-poitras-b52deb.netlify.com/
 
 ## Available Scripts
